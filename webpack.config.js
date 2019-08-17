@@ -1,5 +1,6 @@
 const path = require('path');
 const HWP = require('html-webpack-plugin');
+const MCEP = require('mini-css-extract-plugin');
 
 module.exports = {
     output: {
@@ -18,16 +19,28 @@ module.exports = {
                     postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
                 }
             }]
+        }, {
+            test: /\.scss$/,
+            use: [{
+                    loader: MCEP.loader
+                },
+                {
+                    loader: 'css-loader',
+                },
+                {
+                    loader: 'sass-loader'
+                }
+            ],
         }]
     },
     plugins: [
+        new MCEP({
+            filename: '[name].[hash].css'
+        }),
         new HWP({
+            title: 'Plain Hardware',
             favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-            template: path.resolve(__dirname, 'src', 'index.html'),
-            templateParameters: {
-                title: 'Plain Hardware | Hobby and Electronic store'
-            },
-            hash: true
+            template: path.resolve(__dirname, 'src', 'index.html')
         })
     ]
 }

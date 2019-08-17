@@ -9,7 +9,8 @@
     "gh-pages": "^2.1.1"
   },
   "scripts": {
-    "build": "yarn run webpack -p",
+    "cname": "echo 'www.plain-hardware.co.za' > dist/CNAME",
+    "build": "yarn run webpack -p && yarn run cname",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
   },

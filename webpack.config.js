@@ -2,6 +2,10 @@ const path = require('path');
 const HWP = require('html-webpack-plugin');
 
 module.exports = {
+    output: {
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist')
+    },
     module: {
         rules: [{
             test: /\.(png|jpe?g|gif)$/i,
@@ -12,18 +16,18 @@ module.exports = {
                     outputPath: 'static/assets/',
                     publicPath: 'static/assets/',
                     postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
-                  }
+                }
             }]
         }]
     },
     plugins: [
         new HWP({
-            templateParameters: {
-                title: 'Plain Hardware | Hobby and Electronic store',
-                logo: path.resolve(__dirname, 'src', 'assets', 'logo.png'),
-            },
             favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-            template: path.resolve(__dirname, 'src', 'index.html')
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            templateParameters: {
+                title: 'Plain Hardware | Hobby and Electronic store'
+            },
+            hash: true
         })
     ]
 }

@@ -1,0 +1,14 @@
+{
+  "name": "plainhardware",
+  "version": "1.0.0",
+  "description": "Plain Hardware website",
+  "homepage": "https://www.plain-hardware.co.za",
+  "author": "Jonathan Abrahams",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  }
+}

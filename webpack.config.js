@@ -1,4 +1,5 @@
 const path = require('path');
+const CWP = require('copy-webpack-plugin');
 const HWP = require('html-webpack-plugin');
 const MCEP = require('mini-css-extract-plugin');
 
@@ -34,13 +35,27 @@ module.exports = {
         }]
     },
     plugins: [
+        new CWP([{
+                from: path.resolve(__dirname, 'src', 'assets'),
+                to: path.resolve(__dirname, 'dist', 'static', 'assets')
+            },
+            {
+                from: path.resolve(__dirname, 'src', 'manifest.json'),
+                to: path.resolve(__dirname, 'dist')
+            },
+            {
+                from: path.resolve(__dirname, 'src', 'CNAME'),
+                to: path.resolve(__dirname, 'dist')
+            }
+        ]),
         new MCEP({
             filename: '[name].[hash].css'
         }),
         new HWP({
-            title: 'Plain Hardware',
-            favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-            template: path.resolve(__dirname, 'src', 'index.html')
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            templateParameters: {
+                title: "Plain Hardware"
+            }
         })
     ]
 }

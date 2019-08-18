@@ -8,6 +8,9 @@ module.exports = {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
+    resolve: {
+        extensions: ['*', '.js', '.jsx']
+    },
     module: {
         rules: [{
             test: /\.(png|jpe?g|gif)$/i,
@@ -32,6 +35,12 @@ module.exports = {
                     loader: 'sass-loader'
                 }
             ],
+        }, {
+            test: /\.(js|jsx)$/i,
+            exclude: /node_modules/,
+            use: [{
+                loader: 'babel-loader'
+            }]
         }]
     },
     plugins: [

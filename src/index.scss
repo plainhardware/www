@@ -1,5 +1,32 @@
-body {
-    background: {
-        color: red;
+.unsupported-browser {
+    display: none;
+}
+
+div.app-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes app-spinner {
+    to {
+        transform: rotate(360deg);
     }
+}
+
+div.app-spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #07d;
+    border-bottom-color: #07d;
+    animation: app-spinner .8s ease infinite;
 }

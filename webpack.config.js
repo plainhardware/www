@@ -17,7 +17,15 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
         }
     },
     resolve: {
@@ -79,7 +87,8 @@ module.exports = {
             to: path.resolve(__dirname, 'dist', 'static', 'assets')
         }]),
         new MCEP({
-            filename: '[name].[contenthash].css'
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[hash].css'
         }),
         new HWP({
             template: path.resolve(__dirname, 'src', 'index.html'),

@@ -3,7 +3,6 @@ const CWP = require('copy-webpack-plugin');
 const HWP = require('html-webpack-plugin');
 const MCEP = require('mini-css-extract-plugin');
 const CFW = require('create-file-webpack');
-
 const DEW = require('dotenv-webpack');
 require('dotenv').config();
 
@@ -78,7 +77,7 @@ module.exports = {
         new HWP({
             template: path.resolve(__dirname, 'src', 'index.html'),
             templateParameters: {
-                title: process.env.SHORT_NAME
+                title: process.env.SHORT_NAME || 'Example'
             }
         })
     ]

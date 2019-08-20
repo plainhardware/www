@@ -16,6 +16,11 @@ module.exports = {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },
@@ -64,21 +69,16 @@ module.exports = {
             content: JSON.stringify(manifest)
         }),
         new CWP([{
-                from: path.resolve(__dirname, 'src', 'assets'),
-                to: path.resolve(__dirname, 'dist', 'static', 'assets')
-            },
-            {
-                from: path.resolve(__dirname, 'src', 'manifest.json'),
-                to: path.resolve(__dirname, 'dist')
-            }
-        ]),
+            from: path.resolve(__dirname, 'src', 'assets'),
+            to: path.resolve(__dirname, 'dist', 'static', 'assets')
+        }]),
         new MCEP({
-            filename: '[name].[hash].css'
+            filename: '[name].[contenthash].css'
         }),
         new HWP({
             template: path.resolve(__dirname, 'src', 'index.html'),
             templateParameters: {
-                title: "Plain Hardware"
+                title: process.env.SHORT_NAME
             }
         })
     ]

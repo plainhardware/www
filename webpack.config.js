@@ -36,7 +36,7 @@ module.exports = {
                 }
             }]
         }, {
-            test: /\.scss$/,
+            test: /\.s[ac]ss$/i,
             use: [{
                     loader: MCEP.loader
                 },
@@ -44,7 +44,14 @@ module.exports = {
                     loader: 'css-loader',
                 },
                 {
-                    loader: 'sass-loader'
+                    loader: 'postcss-loader'
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        implementation: require("sass"),
+                        includePaths: [path.resolve(__dirname, 'node_modules')]
+                    }
                 }
             ],
         }, {

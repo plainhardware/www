@@ -2,6 +2,14 @@ const path = require('path');
 const CWP = require('copy-webpack-plugin');
 const HWP = require('html-webpack-plugin');
 const MCEP = require('mini-css-extract-plugin');
+const CFW = require('create-file-webpack');
+
+const DEW = require('dotenv-webpack');
+require('dotenv').config();
+
+const manifest = require(path.resolve(__dirname, 'src', 'manifest.json'))
+manifest.name = process.env.NAME || 'Example'
+manifest.short_name = process.env.SHORT_NAME || 'Example'
 
 module.exports = {
     output: {
@@ -44,16 +52,23 @@ module.exports = {
         }]
     },
     plugins: [
+        new DEW(),
+        new CFW({
+            path: path.resolve(__dirname, 'dist'),
+            fileName: 'CNAME',
+            content: process.env.CNAME || 'example.com'
+        }),
+        new CFW({
+            path: path.resolve(__dirname, 'dist'),
+            fileName: 'manifest.json',
+            content: JSON.stringify(manifest)
+        }),
         new CWP([{
                 from: path.resolve(__dirname, 'src', 'assets'),
                 to: path.resolve(__dirname, 'dist', 'static', 'assets')
             },
             {
                 from: path.resolve(__dirname, 'src', 'manifest.json'),
-                to: path.resolve(__dirname, 'dist')
-            },
-            {
-                from: path.resolve(__dirname, 'src', 'CNAME'),
                 to: path.resolve(__dirname, 'dist')
             }
         ]),

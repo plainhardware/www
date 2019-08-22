@@ -1,6 +1,6 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';;
 import ButtonBase from '@material-ui/core/ButtonBase';

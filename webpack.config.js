@@ -1,9 +1,9 @@
 const path = require('path');
-const CWP = require('copy-webpack-plugin');
-const HWP = require('html-webpack-plugin');
-const MCEP = require('mini-css-extract-plugin');
-const CFW = require('create-file-webpack');
-const DEW = require('dotenv-webpack');
+const CopyWebpack = require('copy-webpack-plugin');
+const HtmlWebpack = require('html-webpack-plugin');
+const MiniCssExtract = require('mini-css-extract-plugin');
+const CreateFileWebpack = require('create-file-webpack');
+const DotEnvWebpack = require('dotenv-webpack');
 require('dotenv').config();
 
 const manifest = require(path.resolve(__dirname, 'src', 'manifest.json'))
@@ -14,6 +14,10 @@ module.exports = {
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
+    },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
     },
     optimization: {
         splitChunks: {
@@ -46,13 +50,19 @@ module.exports = {
         }, {
             test: /\.s[ac]ss$/i,
             use: [{
-                    loader: MCEP.loader
+                    loader: MiniCssExtract.loader
                 },
                 {
                     loader: 'css-loader',
                 },
                 {
-                    loader: 'postcss-loader'
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: (loader) => [
+                            require('autoprefixer'),
+                            require('cssnano')
+                        ]
+                    }
                 },
                 {
                     loader: 'sass-loader',
@@ -66,31 +76,51 @@ module.exports = {
             test: /\.(js|jsx)$/i,
             exclude: /node_modules/,
             use: [{
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                options: {
+                    "plugins": [
+                        ["babel-plugin-import", {
+                            "libraryName": "@material-ui/core",
+                            "libraryDirectory": "esm",
+                            "camel2DashComponentName": false
+                        }],
+                        ["babel-plugin-import", {
+                                "libraryName": "@material-ui/icons",
+                                "libraryDirectory": "esm",
+                                "camel2DashComponentName": false
+                            },
+                            "icons"
+                        ]
+                    ],
+                    "presets": [
+                        "@babel/preset-env",
+                        "@babel/preset-react"
+                    ]
+                }
             }]
         }]
     },
     plugins: [
-        new DEW(),
-        new CFW({
+        new DotEnvWebpack(),
+        new CreateFileWebpack({
             path: path.resolve(__dirname, 'dist'),
             fileName: 'CNAME',
             content: process.env.CNAME || 'example.com'
         }),
-        new CFW({
+        new CreateFileWebpack({
             path: path.resolve(__dirname, 'dist'),
             fileName: 'manifest.json',
             content: JSON.stringify(manifest)
         }),
-        new CWP([{
+        new CopyWebpack([{
             from: path.resolve(__dirname, 'src', 'assets'),
             to: path.resolve(__dirname, 'dist', 'static', 'assets')
         }]),
-        new MCEP({
+        new MiniCssExtract({
             filename: '[name].[contenthash].css',
             chunkFilename: '[id].[hash].css'
         }),
-        new HWP({
+        new HtmlWebpack({
             template: path.resolve(__dirname, 'src', 'index.html'),
             templateParameters: {
                 title: process.env.SHORT_NAME || 'Example'

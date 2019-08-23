@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
 
 import './index.scss'
 import App from './app/App';
 
-render(<App />, document.querySelector('#app'))
+ReactDOM.render(<App />, document.querySelector('#app'))

@@ -4,6 +4,7 @@ const HtmlWebpack = require('html-webpack-plugin');
 const MiniCssExtract = require('mini-css-extract-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const DotEnvWebpack = require('dotenv-webpack');
+const SriPlugin = require('webpack-subresource-integrity');
 require('dotenv').config();
 
 const manifest = require(path.resolve(__dirname, 'src', 'manifest.json'))
@@ -12,6 +13,7 @@ manifest.short_name = process.env.SHORT_NAME || 'Example'
 
 module.exports = {
     output: {
+        crossOriginLoading: 'anonymous',
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
@@ -125,6 +127,10 @@ module.exports = {
             templateParameters: {
                 title: process.env.SHORT_NAME || 'Example'
             }
-        })
+        }),
+        new SriPlugin({
+            hashFuncNames: ['sha256', 'sha384'],
+            enabled: true,
+        }),
     ]
 }

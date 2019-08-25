@@ -20,9 +20,14 @@ const filterList = cacheList => cacheList.filter(isOtherCache)
 const cleanCache = cacheList => Promise.all(filterList(cacheList).map(cacheName => caches.delete(cacheName)))
 const activateHandler = event => event.waitUntil(getCacheList().then(cleanCache))
 
+
+const fetchHandler = (event) => {
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request);
+        })
+    );
+}
 self.addEventListener('install', installHandler)
 self.addEventListener('activate', activateHandler)
-
-self.addEventListener('fetch', event => {
-    console.log('fetch', event)
-});
+self.addEventListener('fetch', fetchHandler);

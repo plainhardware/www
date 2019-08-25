@@ -12,9 +12,13 @@ manifest.name = process.env.NAME || 'Example'
 manifest.short_name = process.env.SHORT_NAME || 'Example'
 
 module.exports = {
+    entry: {
+        index: path.resolve(__dirname, 'src', 'index.jsx'),
+        serviceWorker: path.resolve(__dirname, 'src', 'sw.js')
+    },
     output: {
         crossOriginLoading: 'anonymous',
-        filename: '[name].[contenthash].js',
+        filename: '[name].' + process.env.VERSION + '.js',
         path: path.resolve(__dirname, 'dist')
     },
     externals: {
@@ -43,7 +47,7 @@ module.exports = {
             use: [{
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[contenthash].[ext]',
+                    name: '[name].' + process.env.VERSION + '.[ext]',
                     outputPath: 'static/assets/',
                     publicPath: 'static/assets/',
                     postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
@@ -119,7 +123,7 @@ module.exports = {
             to: path.resolve(__dirname, 'dist', 'static', 'assets')
         }]),
         new MiniCssExtract({
-            filename: '[name].[contenthash].css',
+            filename: '[name].' + process.env.VERSION + '.css',
             chunkFilename: '[id].[hash].css'
         }),
         new HtmlWebpack({

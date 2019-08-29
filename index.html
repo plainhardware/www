@@ -10,7 +10,47 @@
     <link rel="manifest" href="manifest.json" />
     <meta http-equiv="Content-Security-Policy"
         content=" default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com">
-    <style> .unsupported-browser { display: none } div.app-spinner { position: fixed; top: 50%; left: 50% } @-webkit-keyframes app-spinner { to { transform: rotate(1turn) } } @keyframes app-spinner { to { transform: rotate(1turn) } } div.app-spinner:before { content: ""; box-sizing: border-box; position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin-top: -20px; margin-left: -20px; border-radius: 50%; border-color: #07d transparent; border-style: solid; border-width: 2px; -webkit-animation: app-spinner .8s ease infinite; animation: app-spinner .8s ease infinite } </style>
+    <style>
+        .unsupported-browser {
+            display: none
+        }
+
+        div.app-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%
+        }
+
+        @-webkit-keyframes app-spinner {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+
+        @keyframes app-spinner {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+
+        div.app-spinner:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: -20px;
+            border-radius: 50%;
+            border-color: #07d transparent;
+            border-style: solid;
+            border-width: 2px;
+            -webkit-animation: app-spinner .8s ease infinite;
+            animation: app-spinner .8s ease infinite
+        }
+    </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="index.v1.ph.css" rel="stylesheet" integrity="sha256-QjrYVixrX26Zigp+Fiqrz6k8DpsVTReAwZnKZIoiiFQ= sha384-FU7AKajrPAssPvGedLwCdCHFd/i33seNWMR6ilW/FLEGongjOtRdfPRVGxwGtTFV" crossorigin="anonymous"></head>
@@ -27,6 +67,13 @@
         integrity="sha384-CkwnPTQUF6/knDyAdScDfjTRGGbMqivPLvXfe4XughFhcWhZatKk2jZWuoBSgcNz"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16.9.0/umd/react-dom.production.min.js"
         integrity="sha384-2MsSfEEGJ2Rogg7MLVzlu18tndW7K3SJ4i4b9kxTdVP9Mew3syLP9P+ieLx1BjCe"></script>
+    <script defer crossorigin src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"
+        integrity="sha384-riKBN+5FMdW+VE6BNfWACGVkyXyArfM12paqTMRuRM1SaA+0+4OgHDp+0L9E9FEB"></script>
+    <script defer crossorigin src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"
+        integrity="sha384-mW/UCBLDBedEwcgREUAbHevjH2aDfxot/22RvaBLzrz5tJhgMUIQcANQRP4du+b6"></script>
+    <script defer crossorigin src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"
+        integrity="sha384-5DlSbh8pNvNsWCylV9GOscATjDwIoNSKxzsHrsFBR4pQlNR0Tkvlt/8AAlRa5xeL"></script>
+    <script defer src="./init-firebase.js"></script>
 <script type="text/javascript" src="vendors~index.v1.ph.js" integrity="sha256-qHBpP6MXBWYG+RA5Fz6gic6jnVCQ0wUr9lvtyzzK/3w= sha384-5E51+hY4MwmdoCJ/PYIZO0nZNTBSWvsw4gPtFkirrths6c2Cd1e5/lPiPSDFOe7w" crossorigin="anonymous"></script><script type="text/javascript" src="index.v1.ph.js" integrity="sha256-OThBVWXHQsqpkMIvcqndC1lBAcXeqHJDLt+e+RfAHRw= sha384-6Onxdgjo7+xSb02yZDaaBjyNOQyMsOuT+2rY7OJywBSyWzsFGk9Ojag9zT5at/db" crossorigin="anonymous"></script><script type="text/javascript" src="serviceWorker.v1.ph.js" integrity="sha256-Yeg39FNNfA4mNe+9XAkWPkoSrsSgHBAwLzjxfUBX4O8= sha384-2p0WGNJDy7zWJ3Lhr4Hu6YaPso/b9ku5ELM7G8g/VpipI4h547hG+XJlQ1AGiOSD" crossorigin="anonymous"></script></body>
 
 </html>

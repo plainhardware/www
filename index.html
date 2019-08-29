@@ -10,47 +10,7 @@
     <link rel="manifest" href="manifest.json" />
     <meta http-equiv="Content-Security-Policy"
         content=" default-src 'self'; script-src 'self' https://unpkg.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com">
-    <style>
-        .unsupported-browser {
-            display: none
-        }
-
-        div.app-spinner {
-            position: fixed;
-            top: 50%;
-            left: 50%
-        }
-
-        @-webkit-keyframes app-spinner {
-            to {
-                transform: rotate(1turn)
-            }
-        }
-
-        @keyframes app-spinner {
-            to {
-                transform: rotate(1turn)
-            }
-        }
-
-        div.app-spinner:before {
-            content: "";
-            box-sizing: border-box;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            margin-top: -20px;
-            margin-left: -20px;
-            border-radius: 50%;
-            border-color: #07d transparent;
-            border-style: solid;
-            border-width: 2px;
-            -webkit-animation: app-spinner .8s ease infinite;
-            animation: app-spinner .8s ease infinite
-        }
-    </style>
+    <style> .unsupported-browser { display: none } div.app-spinner { position: fixed; top: 50%; left: 50% } @-webkit-keyframes app-spinner { to { transform: rotate(1turn) } } @keyframes app-spinner { to { transform: rotate(1turn) } } div.app-spinner:before { content: ""; box-sizing: border-box; position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin-top: -20px; margin-left: -20px; border-radius: 50%; border-color: #07d transparent; border-style: solid; border-width: 2px; -webkit-animation: app-spinner .8s ease infinite; animation: app-spinner .8s ease infinite } </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="index.v1.ph.css" rel="stylesheet" integrity="sha256-QjrYVixrX26Zigp+Fiqrz6k8DpsVTReAwZnKZIoiiFQ= sha384-FU7AKajrPAssPvGedLwCdCHFd/i33seNWMR6ilW/FLEGongjOtRdfPRVGxwGtTFV" crossorigin="anonymous"></head>
@@ -70,6 +30,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
-<script type="text/javascript" src="vendors~index.v1.ph.js" integrity="sha256-6g8SEJTUfzF27qldIWlg4yTfRLQqIKYTOuUftU5k64E= sha384-QQUlchvazDZGXnN6+G2UsjuM9el0t3pCX1RHSiNlaCSPT9HwcOpLJbx4GX9l58W8" crossorigin="anonymous"></script><script type="text/javascript" src="index.v1.ph.js" integrity="sha256-T/mKxu1v8b7ea6QVuKoIXBDtPyj4IO4YQIjKTs4faq0= sha384-uFJCr0YFd16P0sof2LGRsQlEfiutsaKCanCBNMwv6fs8LURQQlxZnQ/sO3KV6SDX" crossorigin="anonymous"></script><script type="text/javascript" src="serviceWorker.v1.ph.js" integrity="sha256-Yeg39FNNfA4mNe+9XAkWPkoSrsSgHBAwLzjxfUBX4O8= sha384-2p0WGNJDy7zWJ3Lhr4Hu6YaPso/b9ku5ELM7G8g/VpipI4h547hG+XJlQ1AGiOSD" crossorigin="anonymous"></script><script type="text/javascript" src="firebase.v1.ph.js" defer integrity="sha256-c18BtMVc8gfNfDUVzEGrIKoGwRMM7PSj+rS7nJBLfEI= sha384-kN8xVyTzaTt/TxEd60eLBEYLgIeVx4CGSvcpZTKLTVQHh1uN9/Y9VdOBKptoVD54" crossorigin="anonymous"></script></body>
+<script type="text/javascript" src="vendors~index.v1.ph.js" integrity="sha256-6g8SEJTUfzF27qldIWlg4yTfRLQqIKYTOuUftU5k64E= sha384-QQUlchvazDZGXnN6+G2UsjuM9el0t3pCX1RHSiNlaCSPT9HwcOpLJbx4GX9l58W8" crossorigin="anonymous"></script><script type="text/javascript" src="index.v1.ph.js" integrity="sha256-T/mKxu1v8b7ea6QVuKoIXBDtPyj4IO4YQIjKTs4faq0= sha384-uFJCr0YFd16P0sof2LGRsQlEfiutsaKCanCBNMwv6fs8LURQQlxZnQ/sO3KV6SDX" crossorigin="anonymous"></script><script type="text/javascript" src="serviceWorker.v1.ph.js" integrity="sha256-juCn20wdUHHZWRw86MncQ+TXVQNQ6cP2j8EJVgn13x8= sha384-tHP/MLEu0lOax7bN7KO9zC0V9hdFwv9VY3AJ9GR8xolW4FOFU/E3QDEvv3zzXFUn" crossorigin="anonymous"></script><script type="text/javascript" src="firebase.v1.ph.js" defer integrity="sha256-c18BtMVc8gfNfDUVzEGrIKoGwRMM7PSj+rS7nJBLfEI= sha384-kN8xVyTzaTt/TxEd60eLBEYLgIeVx4CGSvcpZTKLTVQHh1uN9/Y9VdOBKptoVD54" crossorigin="anonymous"></script></body>
 
 </html>

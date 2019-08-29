@@ -5,6 +5,8 @@ const MiniCssExtract = require('mini-css-extract-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const DotEnvWebpack = require('dotenv-webpack');
 const SriPlugin = require('webpack-subresource-integrity');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+
 require('dotenv').config();
 
 const manifest = require(path.resolve(__dirname, 'src', 'manifest.json'))
@@ -14,7 +16,8 @@ manifest.short_name = process.env.SHORT_NAME || 'Example'
 module.exports = {
     entry: {
         index: path.resolve(__dirname, 'src', 'index.jsx'),
-        serviceWorker: path.resolve(__dirname, 'src', 'sw.js')
+        serviceWorker: path.resolve(__dirname, 'src', 'sw.js'),
+        firebase: path.resolve(__dirname, 'src', 'init-firebase.js')
     },
     output: {
         crossOriginLoading: 'anonymous',
@@ -136,5 +139,8 @@ module.exports = {
             hashFuncNames: ['sha256', 'sha384'],
             enabled: true,
         }),
+        new ScriptExtHtmlWebpackPlugin({
+            defer: ['firebase']
+        })
     ]
 }

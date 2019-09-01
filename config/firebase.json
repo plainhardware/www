@@ -1,0 +1,8 @@
+{
+    "apiKey": "AIzaSyA91JVTqR91yhKe5F386NQt_r7D3X3l_18",
+    "databaseURL": "https://plain-hardware.firebaseio.com",
+    "storageBucket": "plain-hardware.appspot.com",
+    "authDomain": "plain-hardware.firebaseapp.com",
+    "messagingSenderId": "524339526113",
+    "projectId": "plain-hardware"
+}

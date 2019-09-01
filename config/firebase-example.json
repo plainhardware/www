@@ -1,0 +1,8 @@
+{
+    "apiKey": "---SECRET-AP-KEY---",
+    "databaseURL": "https://example.firebaseio.com",
+    "storageBucket": "exampe.appspot.com",
+    "authDomain": "example.firebaseapp.com",
+    "messagingSenderId": "123456789",
+    "projectId": "example"
+}

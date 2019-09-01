@@ -4,7 +4,6 @@ var urlsToCache = [
     'index.' + process.env.VERSION + '.css',
     'index.' + process.env.VERSION + '.js',
     'vendors~index.' + process.env.VERSION + '.js',
-    'serviceWorker.' + process.env.VERSION + '.js',
     'firebase.' + process.env.VERSION + '.js',
     'manifest.json',
     'static/assets/favicon.ico',

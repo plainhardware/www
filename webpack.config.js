@@ -135,10 +135,10 @@ module.exports = {
                 title: process.env.SHORT_NAME || 'Example'
             }
         }),
-        new SriPlugin({
-            hashFuncNames: ['sha256', 'sha384'],
-            enabled: true,
-        }),
+        // new SriPlugin({
+        //     hashFuncNames: ['sha256', 'sha384'],
+        //     enabled: true,
+        // }),
         new ScriptExtHtmlWebpackPlugin({
             defer: ['firebase']
         })

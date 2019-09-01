@@ -4,16 +4,26 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './app/App';
 
-console.log("Booting", (new Date).getTime());
+ReactDOM.render(<App />, document.querySelector('#app'))
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        console.log('Ready', (new Date).getTime())
         navigator.serviceWorker.register('/serviceWorker.' + process.env.VERSION + '.js')
-            .then((registration) => {
-                console.log('Registered', registration.scope)
-            }).catch((err) => {
-                console.log('Error Registering', err)
-            })
     })
 }
-ReactDOM.render(<App />, document.querySelector('#app'))
+let currentUser = undefined
+let db = undefined
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        let app = firebase.app(process.env.SHORT_NAME)
+        // Initialize Cloud Firestore through Firebase
+        db = app.firestore();
+
+        let features = ['auth', 'database', 'messaging', 'storage', 'firestore'].filter(feature => typeof app[feature] === 'function');
+        console.log("Firebase SDK loaded with " + features.join(', '));
+    } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+    }
+})

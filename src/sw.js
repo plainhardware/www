@@ -6,7 +6,11 @@ var urlsToCache = [
     'vendors~index.' + process.env.VERSION + '.js',
     'manifest.json',
     'static/assets/favicon.ico',
-    'static/assets/android-chrome-32x32.png',
+    'static/assets/logo.png',
+    'static/assets/favicon-16x16.png',
+    'static/assets/favicon-32x32.png',
+    'static/assets/android-chrome-512x512.png',
+    'static/assets/apple-touch-icon.png',
     'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://unpkg.com/react@16.9.0/umd/react.production.min.js',
@@ -29,15 +33,15 @@ const fetchHandler = (event) => {
         caches.match(event.request)
         .then((response) => {
             return response || fetch(event.request)
-                .then(response => {
-                    if (/^https:\/\/www\.gstatic\.com/.test(event.request.url)) {
-                        return caches.open(CACHE_NAME).then(cache => {
-                            cache.put(event.request, response.clone());
-                            return response;
-                        })
-                    }
-                    return response
-                });
+            .then(response => {
+                if (/^https:\/\/www\.gstatic\.com/.test(event.request.url)) {
+                    return caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    })
+                }
+                return response
+            });
         })
     );
 }

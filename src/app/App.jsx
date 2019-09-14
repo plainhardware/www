@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';;
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Sum from '@plainhardware/cart/lib/sum';
+import { Sub } from '@plainhardware/cart';
 
 import './app.scss'
 
@@ -61,7 +61,7 @@ const App = () => {
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant="subtitle1">${Sum(19, 1)}.00</Typography>
+              <Typography variant="subtitle1">${Sub(19, 1)}.00</Typography>
             </Grid>
           </Grid>
         </Grid>

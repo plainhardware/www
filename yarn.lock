@@ -780,11 +780,6 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-"@plainhardware/cart@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@plainhardware/cart/-/cart-1.0.3.tgz#42b9760c6712d0c586b1178d60c1cc7d2fdc82f5"
-  integrity sha512-KbdHvLUsK4t3T76tCuCrZxHFgB0NQicD/X2tnHVpnH/eA0TEgol9I4AoyzueLDBOUodJZMAHwYXILl2u3zX5GA==
-
 "@types/prop-types@*":
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.2.tgz#0e58ae66773d7fd7c372a493aff740878ec9ceaa"

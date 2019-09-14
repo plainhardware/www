@@ -6,11 +6,11 @@ import App from './app/App';
 
 ReactDOM.render(<App />, document.querySelector('#app'))
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/serviceWorker.' + process.env.VERSION + '.js')
-    })
-}
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//         navigator.serviceWorker.register('/serviceWorker.' + process.env.VERSION + '.js')
+//     })
+// }
 let currentUser = undefined
 let db = undefined
 

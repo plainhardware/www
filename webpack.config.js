@@ -124,6 +124,9 @@ module.exports = {
         new CopyWebpack([{
             from: path.resolve(__dirname, 'src', 'assets'),
             to: path.resolve(__dirname, 'dist', 'static', 'assets')
+        }, {
+            from: path.resolve(__dirname, 'src', 'robots.txt'),
+            to: path.resolve(__dirname, 'dist')
         }]),
         new MiniCssExtract({
             filename: '[name].' + process.env.VERSION + '.css',
@@ -132,7 +135,8 @@ module.exports = {
         new HtmlWebpack({
             template: path.resolve(__dirname, 'src', 'index.html'),
             templateParameters: {
-                title: process.env.SHORT_NAME || 'Example'
+                title: process.env.SHORT_NAME || 'Example',
+                description: process.env.SHORT_NAME || 'Example dot com'
             }
         }),
         // new SriPlugin({

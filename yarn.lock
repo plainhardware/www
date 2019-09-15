@@ -780,6 +780,11 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
+"@plainhardware/ui-kit@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@plainhardware/ui-kit/-/ui-kit-1.0.1.tgz#a03c1cba989e485e251541d275374d284ac8e850"
+  integrity sha512-tvSxUoRpQWCeTVvvRohoIOsYlJ2/6ZAmABjOpqDnbUztyXM1u+5qlUjxzcwLHboAVbZUs/tSA0+Ke6By0qBBBA==
+
 "@types/prop-types@*":
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.2.tgz#0e58ae66773d7fd7c372a493aff740878ec9ceaa"

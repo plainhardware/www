@@ -5,8 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';;
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { Sub } from '@plainhardware/cart';
-
-import './app.scss'
+import Button from '@plainhardware/ui-kit/lib/Button'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -56,7 +55,7 @@ const App = () => {
               </Grid>
               <Grid item>
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
+                  <Button >Remove</Button>
                 </Typography>
               </Grid>
             </Grid>

@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';;
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { Sub } from '@plainhardware/cart';
-import Button from '@plainhardware/ui-kit/lib/Button'
+import {Button} from '@plainhardware/ui-kit'
 
 const useStyles = makeStyles(theme => ({
   root: {

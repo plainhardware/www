@@ -17,7 +17,7 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname, 'src', 'index.jsx'),
         serviceWorker: path.resolve(__dirname, 'src', 'sw.js'),
-        firebase: path.resolve(__dirname, 'src', 'init-firebase.js')
+        // firebase: path.resolve(__dirname, 'src', 'init-firebase.js')
     },
     output: {
         crossOriginLoading: 'anonymous',

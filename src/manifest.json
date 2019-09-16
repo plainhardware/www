@@ -1,5 +1,5 @@
 {
-    "start_url": "./index.html",
+    "start_url": "/",
     "icons": [{
         "src": "/static/assets/android-chrome-192x192.png",
         "sizes": "192x192",

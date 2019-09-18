@@ -1,7 +1,6 @@
 var CACHE_NAME = process.env.VERSION || 'v1';
 var urlsToCache = [
-    '/',
-    'index.' + process.env.VERSION + '.css',
+    'index.html',
     'index.' + process.env.VERSION + '.js',
     'vendors~index.' + process.env.VERSION + '.js',
     'manifest.json',
@@ -13,7 +12,6 @@ var urlsToCache = [
     'static/assets/android-chrome-512x512.png',
     'static/assets/apple-touch-icon.png',
     'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
-    'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://unpkg.com/react@16.9.0/umd/react.production.min.js',
     'https://unpkg.com/react-dom@16.9.0/umd/react-dom.production.min.js'
 ];

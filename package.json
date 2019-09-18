@@ -6,7 +6,6 @@
   "author": "Jonathan Abrahams",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^4.3.2",
     "gh-pages": "^2.1.1",
     "normalize-scss": "^7.0.1"
   },
@@ -37,7 +36,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "sass": "^1.22.10",
-    "sass-loader": "^7.2.0",
+    "sass-loader": "^8.0.0",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",

@@ -4,7 +4,6 @@ const HtmlWebpack = require('html-webpack-plugin');
 const MiniCssExtract = require('mini-css-extract-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const DotEnvWebpack = require('dotenv-webpack');
-const SriPlugin = require('webpack-subresource-integrity');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 require('dotenv').config();
@@ -17,7 +16,6 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname, 'src', 'index.jsx'),
         serviceWorker: path.resolve(__dirname, 'src', 'sw.js'),
-        // firebase: path.resolve(__dirname, 'src', 'init-firebase.js')
     },
     output: {
         crossOriginLoading: 'anonymous',
@@ -58,12 +56,9 @@ module.exports = {
             }]
         }, {
             test: /\.s[ac]ss$/i,
-            use: [{
-                    loader: MiniCssExtract.loader
-                },
-                {
-                    loader: 'css-loader',
-                },
+            use: [
+                'style-loader',
+                'css-loader',
                 {
                     loader: 'postcss-loader',
                     options: {
@@ -73,13 +68,7 @@ module.exports = {
                         ]
                     }
                 },
-                {
-                    loader: 'sass-loader',
-                    options: {
-                        implementation: require("sass"),
-                        includePaths: [path.resolve(__dirname, 'node_modules')]
-                    }
-                }
+                'sass-loader'
             ],
         }, {
             test: /\.(js|jsx)$/i,

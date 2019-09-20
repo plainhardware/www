@@ -1,10 +1,10 @@
 const path = require('path');
 const CopyWebpack = require('copy-webpack-plugin');
 const HtmlWebpack = require('html-webpack-plugin');
-const MiniCssExtract = require('mini-css-extract-plugin');
 const CreateFileWebpack = require('create-file-webpack');
 const DotEnvWebpack = require('dotenv-webpack');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 require('dotenv').config();
 
@@ -13,6 +13,7 @@ manifest.name = process.env.NAME || 'Example'
 manifest.short_name = process.env.SHORT_NAME || 'Example'
 
 module.exports = {
+    mode: process.env.NODE_ENV || 'production',
     entry: {
         index: path.resolve(__dirname, 'src', 'index.jsx'),
         serviceWorker: path.resolve(__dirname, 'src', 'sw.js'),
@@ -59,15 +60,6 @@ module.exports = {
             use: [
                 'style-loader',
                 'css-loader',
-                {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: (loader) => [
-                            require('autoprefixer'),
-                            require('cssnano')
-                        ]
-                    }
-                },
                 'sass-loader'
             ],
         }, {
@@ -76,20 +68,7 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    "plugins": [
-                        ["babel-plugin-import", {
-                            "libraryName": "@material-ui/core",
-                            "libraryDirectory": "esm",
-                            "camel2DashComponentName": false
-                        }],
-                        ["babel-plugin-import", {
-                                "libraryName": "@material-ui/icons",
-                                "libraryDirectory": "esm",
-                                "camel2DashComponentName": false
-                            },
-                            "icons"
-                        ]
-                    ],
+                    "plugins": [],
                     "presets": [
                         "@babel/preset-env",
                         "@babel/preset-react"
@@ -117,10 +96,6 @@ module.exports = {
             from: path.resolve(__dirname, 'src', 'robots.txt'),
             to: path.resolve(__dirname, 'dist')
         }]),
-        new MiniCssExtract({
-            filename: '[name].' + process.env.VERSION + '.css',
-            chunkFilename: '[id].[hash].css'
-        }),
         new HtmlWebpack({
             template: path.resolve(__dirname, 'src', 'index.html'),
             templateParameters: {
@@ -128,12 +103,9 @@ module.exports = {
                 description: process.env.SHORT_NAME || 'Example dot com'
             }
         }),
-        // new SriPlugin({
-        //     hashFuncNames: ['sha256', 'sha384'],
-        //     enabled: true,
-        // }),
         new ScriptExtHtmlWebpackPlugin({
             defer: ['firebase']
-        })
+        }),
+        new LiveReloadPlugin()
     ]
 }

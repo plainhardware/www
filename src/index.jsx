@@ -10,7 +10,7 @@ import config from '../config/firebase.json'
 
 ReactDOM.render(<App />, document.querySelector('#app'))
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && process.env.NODE_ENV != 'development') {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/serviceWorker.' + process.env.VERSION + '.js')
     })

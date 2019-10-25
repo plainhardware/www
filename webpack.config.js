@@ -23,23 +23,20 @@ module.exports = {
         filename: '[name].' + process.env.VERSION + '.js',
         path: path.resolve(__dirname, 'dist')
     },
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM'
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true,
-                },
-            },
-        }
-    },
+    devtool: 'source-map',
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //         cacheGroups: {
+    //             styles: {
+    //                 name: 'styles',
+    //                 test: /\.css$/,
+    //                 chunks: 'all',
+    //                 enforce: true,
+    //             },
+    //         },
+    //     }
+    // },
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },
@@ -68,7 +65,13 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    "plugins": [],
+                    "plugins": [
+                        ["@babel/plugin-transform-runtime",
+                            {
+                                "regenerator": true
+                            }
+                        ]
+                    ],
                     "presets": [
                         "@babel/preset-env",
                         "@babel/preset-react"
@@ -106,6 +109,6 @@ module.exports = {
         new ScriptExtHtmlWebpackPlugin({
             defer: ['firebase']
         }),
-        new LiveReloadPlugin()
+        ...(process.env.NODE_ENV == 'development' ? [new LiveReloadPlugin()] : [])
     ]
 }

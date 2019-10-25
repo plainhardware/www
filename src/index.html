@@ -7,16 +7,59 @@
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <title><%= title %></title>
     <meta name="Description" content="<%= description %>">
-    <meta name="theme-color"  content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
     <link href="static/assets/favicon.ico" rel="shortcut icon" />
     <link rel="apple-touch-icon" href="i<%= require('./assets/apple-touch-icon.png') %>">
     <meta name="robots" content="noindex, nofollow">
     <link rel="manifest" href="manifest.json" />
-    <style> .unsupported-browser { display: none } div.app-spinner { position: fixed; top: 50%; left: 50% } @-webkit-keyframes app-spinner { to { transform: rotate(1turn) } } @keyframes app-spinner { to { transform: rotate(1turn) } } div.app-spinner:before { content: ""; box-sizing: border-box; position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin-top: -20px; margin-left: -20px; border-radius: 50%; border-color: #07d transparent; border-style: solid; border-width: 2px; -webkit-animation: app-spinner .8s ease infinite; animation: app-spinner .8s ease infinite } </style>
+    <style>
+        .unsupported-browser {
+            display: none
+        }
+
+        div.app-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%
+        }
+
+        @-webkit-keyframes app-spinner {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+
+        @keyframes app-spinner {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+
+        div.app-spinner:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: -20px;
+            border-radius: 50%;
+            border-color: #07d transparent;
+            border-style: solid;
+            border-width: 2px;
+            -webkit-animation: app-spinner .8s ease infinite;
+            animation: app-spinner .8s ease infinite
+        }
+    </style>
 </head>
 
 <body>
-    <noscript> <h1>You don’t have javascript enabled.</h1> <p>Please enable it to get the full experience.</p> </noscript>
+    <noscript>
+        <h1>You don’t have javascript enabled.</h1>
+        <p>Please enable it to get the full experience.</p>
+    </noscript>
     <div class="unsupported-browser">
         Sorry, your browser is not supported. Please upgrade to the latest version or switch your browser to use this
         site. See <a href="http://outdatedbrowser.com/">outdatedbrowser.com</a> for options.
@@ -24,9 +67,6 @@
     <div id="app">
         <div class="app-spinner"></div>
     </div>
-    <script crossorigin src="https://unpkg.com/react@16.9.0/umd/react.production.min.js"
-        integrity="sha384-CkwnPTQUF6/knDyAdScDfjTRGGbMqivPLvXfe4XughFhcWhZatKk2jZWuoBSgcNz"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16.9.0/umd/react-dom.production.min.js"
-        integrity="sha384-2MsSfEEGJ2Rogg7MLVzlu18tndW7K3SJ4i4b9kxTdVP9Mew3syLP9P+ieLx1BjCe"></script>
 </body>
+
 </html>
